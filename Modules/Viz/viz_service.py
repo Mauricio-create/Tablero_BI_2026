@@ -78,7 +78,13 @@ class EcobiciMap:
             height=650
         )
 
-        fig.update_traces(marker=dict(size=point_size))
+        # PUNTOS AZUL MARINO
+        fig.update_traces(
+            marker=dict(
+                size=point_size,
+                color="#001f3f"
+            )
+        )
 
         # =========================
         # MARCADOR ESTACIÓN
