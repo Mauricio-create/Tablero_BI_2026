@@ -75,8 +75,7 @@ class EcobiciMap:
                 "num_docks_available": True
             },
             zoom=12,
-            height=650,
-            showlegend=False
+            height=650
         )
 
         fig.update_traces(marker=dict(size=point_size))
@@ -98,7 +97,7 @@ class EcobiciMap:
                         size=point_size + 10,
                         color="red"
                     ),
-                    name="Estación seleccionada"
+                    showlegend=False
                 )
             )
 
@@ -118,7 +117,8 @@ class EcobiciMap:
             mapbox_zoom=zoom_dict[zoom_level],
             mapbox_center={"lat": center_lat, "lon": center_lon},
             title="Estaciones Ecobici - Ciudad de México",
-            margin={"r":0,"t":40,"l":0,"b":0}
+            margin={"r":0,"t":40,"l":0,"b":0},
+            showlegend=False
         )
 
         return fig
