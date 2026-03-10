@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 import matplotlib.pyplot as plt
 import seaborn as sns
-import geopandas as gpd
+
 
 
 class EcobiciLoader:
@@ -88,24 +88,3 @@ class EcobiciLoader:
         self.df = pd.concat([self.df_stations, self.df_status], axis=1)
 
         return self.df
-
-    def load_cdmx_map(self, path="cdmx.geojson"):
-        """Carga el mapa de CDMX"""
-        cdmx = gpd.read_file(path)
-        return cdmx
-
-    def plot_stations(self, cdmx):
-        """Grafica las estaciones sobre el mapa"""
-        fig, axs = plt.subplots(figsize=(8, 6))
-
-        cdmx.boundary.plot(ax=axs, ec='gray', linewidth=0.5)
-
-        sns.scatterplot(
-            data=self.df,
-            x='lon',
-            y='lat',
-            ax=axs
-        )
-
-        plt.axis('off')
-        plt.show()
