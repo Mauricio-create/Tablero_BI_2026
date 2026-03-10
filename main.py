@@ -7,6 +7,6 @@ import pandas as pd
 # Sección para crear la GUI
 show_header("Mi primera GUI en Streamlit")
 
-ecobici = EcobiciService()
+ecobici = EcobiciLoader()
 df = eco.merge_data()
 st.write(df)
