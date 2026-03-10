@@ -9,4 +9,8 @@ show_header("Mi primera GUI en Streamlit")
 
 ecobici = EcobiciLoader()
 df = ecobici.merge_data()
-st.write(df)
+mapa = EcobiciMap(df)
+fig = mapa.create_map()
+
+# Mostrar mapa
+st.plotly_chart(fig, use_container_width=True)
