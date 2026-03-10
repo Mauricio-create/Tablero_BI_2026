@@ -22,6 +22,4 @@ El objetivo de este repositorio es proporcionar una plantilla inicial para const
 - Plotly / Matplotlib
 - Git / GitHub para control de versiones
 
-## Estructura del Proyecto
 
-Una estructura sugerida del proyecto es la siguiente:
