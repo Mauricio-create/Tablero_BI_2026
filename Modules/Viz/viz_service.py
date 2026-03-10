@@ -121,4 +121,4 @@ class EcobiciMap:
             showlegend=False
         )
 
-        return fig
+        return return fig, estacion_seleccionada
