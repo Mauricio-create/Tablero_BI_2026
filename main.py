@@ -8,5 +8,5 @@ import pandas as pd
 show_header("Mi primera GUI en Streamlit")
 
 ecobici = EcobiciLoader()
-df = eco.merge_data()
+df = ecobici.merge_data()
 st.write(df)
