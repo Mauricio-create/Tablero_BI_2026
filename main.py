@@ -1,6 +1,5 @@
-import streamlit as st
+# Sección de importación de módulos
+from Modules.UI.header import show_header
 
-
-#La siguiente lína de código es equivalente a print
-
-st.write("Hola Mundo")
+# Sección para crear la GUI
+show_header("Mi primera GUI en Streamlit")
