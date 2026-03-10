@@ -19,7 +19,7 @@ El objetivo de este repositorio es proporcionar una plantilla inicial para const
 - Python
 - Streamlit
 - Pandas
-- Plotly / Matplotlib (según sea necesario)
+- Plotly / Matplotlib
 - Git / GitHub para control de versiones
 
 ## Estructura del Proyecto
