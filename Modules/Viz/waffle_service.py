@@ -71,13 +71,16 @@ class EcobiciWaffle:
                     "Puerto dañado",
                 ],
                 "loc": "lower center",
-                "bbox_to_anchor": (0.5, -0.2),
+                "bbox_to_anchor": (0.5, -0.35),  # ← baja la leyenda
                 "ncol": 2,
                 "framealpha": 0,
                 "fontsize": 12,
             },
             figsize=(8, 7),
         )
+
+        # Espacio extra abajo para que no se encime
+        fig.subplots_adjust(bottom=0.25)
 
         plt.title(titulo, fontsize=16)
 
