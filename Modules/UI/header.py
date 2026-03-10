@@ -1,6 +1,3 @@
-# UP_BI_2025_Sept/Modules/UI/header.py
-# Encabezado de mi Interfaz gráfica de mi app
-
 import streamlit as st
 
 def show_header(text_title: str):
@@ -13,4 +10,4 @@ def show_header(text_title: str):
     with col2:
         st.title(text_title)
         st.caption("📘 Developed for: *Business Intelligence (Graduate Level)*")
-        st.caption("Instructor: Edgar Avalos-Gauna (2025), Universidad Panamericana")
+        st.caption("Instructor: Mauricio González Castelazo (2026), Universidad Panamericana")
