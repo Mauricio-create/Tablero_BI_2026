@@ -28,14 +28,12 @@ waffle = EcobiciWaffle(df)
 fig_waffle = waffle.create_waffle(estacion)
 
 # =========================
-# Layout lado a lado
+# Layout vertical
 # =========================
 
-col1, col2 = st.columns([3,2])
+# MAPA
+st.plotly_chart(fig_map, use_container_width=True)
 
-with col1:
-    st.plotly_chart(fig_map, use_container_width=True)
-
-with col2:
-    if fig_waffle:
-        st.pyplot(fig_waffle)
+# WAFFLE
+if fig_waffle:
+    st.pyplot(fig_waffle, use_container_width=True)
