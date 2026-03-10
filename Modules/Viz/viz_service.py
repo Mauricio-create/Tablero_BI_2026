@@ -11,32 +11,26 @@ class EcobiciMap:
     def create_map(self):
 
         # =========================
-        # FILTRO DE ESTACIONES
+        # SIDEBAR - CONFIGURACIÓN
         # =========================
+
+        st.sidebar.title("⚙️ Configuración del mapa")
 
         estaciones = ["Todas"] + sorted(self.df["name"].unique().tolist())
 
-        estacion_seleccionada = st.selectbox(
+        estacion_seleccionada = st.sidebar.selectbox(
             "Selecciona una estación",
             estaciones
         )
 
-        # =========================
-        # SLIDER DE ZOOM
-        # =========================
-
-        zoom_level = st.slider(
+        zoom_level = st.sidebar.slider(
             "Nivel de zoom",
             min_value=1,
             max_value=4,
             value=1
         )
 
-        # =========================
-        # SLIDER TAMAÑO DE PUNTO
-        # =========================
-
-        point_size = st.slider(
+        point_size = st.sidebar.slider(
             "Tamaño de estaciones",
             min_value=6,
             max_value=30,
@@ -84,7 +78,6 @@ class EcobiciMap:
             height=650
         )
 
-        # tamaño dinámico
         fig.update_traces(marker=dict(size=point_size))
 
         # =========================
