@@ -75,7 +75,8 @@ class EcobiciMap:
                 "num_docks_available": True
             },
             zoom=12,
-            height=650
+            height=650,
+            showlegend=False
         )
 
         fig.update_traces(marker=dict(size=point_size))
