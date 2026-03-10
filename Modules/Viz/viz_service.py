@@ -33,25 +33,36 @@ class EcobiciMap:
         )
 
         # =========================
+        # SLIDER TAMAÑO DE PUNTO
+        # =========================
+
+        point_size = st.slider(
+            "Tamaño de estaciones",
+            min_value=6,
+            max_value=30,
+            value=12
+        )
+
+        # =========================
         # CENTRO DEL MAPA
         # =========================
 
+        centroid_lat = self.df["lat"].mean()
+        centroid_lon = self.df["lon"].mean()
+
         if estacion_seleccionada == "Todas":
 
-            center_lat = self.df["lat"].mean()
-            center_lon = self.df["lon"].mean()
+            center_lat = centroid_lat
+            center_lon = centroid_lon
 
         else:
 
             estacion = self.df[self.df["name"] == estacion_seleccionada]
 
             if zoom_level == 1:
-
-                center_lat = self.df["lat"].mean()
-                center_lon = self.df["lon"].mean()
-
+                center_lat = centroid_lat
+                center_lon = centroid_lon
             else:
-
                 center_lat = estacion["lat"].values[0]
                 center_lon = estacion["lon"].values[0]
 
@@ -69,12 +80,12 @@ class EcobiciMap:
                 "num_bikes_available": True,
                 "num_docks_available": True
             },
-            zoom=10,
-            height=600
+            zoom=12,
+            height=650
         )
 
-        # círculos más grandes
-        fig.update_traces(marker=dict(size=12))
+        # tamaño dinámico
+        fig.update_traces(marker=dict(size=point_size))
 
         # =========================
         # MARCADOR ESTACIÓN
@@ -90,7 +101,7 @@ class EcobiciMap:
                     lon=estacion["lon"],
                     mode="markers",
                     marker=dict(
-                        size=22,
+                        size=point_size + 10,
                         color="red"
                     ),
                     name="Estación seleccionada"
@@ -102,9 +113,9 @@ class EcobiciMap:
         # =========================
 
         zoom_dict = {
-            1: 10,
-            2: 12,
-            3: 13,
+            1: 12,
+            2: 13,
+            3: 14,
             4: 15
         }
 
