@@ -31,7 +31,7 @@ fig_waffle = waffle.create_waffle(estacion)
 # Layout lado a lado
 # =========================
 
-col1, col2 = st.columns([2,1])
+col1, col2 = st.columns([3,2])
 
 with col1:
     st.plotly_chart(fig_map, use_container_width=True)
