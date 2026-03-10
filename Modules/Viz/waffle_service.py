@@ -11,44 +11,37 @@ class EcobiciWaffle:
     def create_waffle(self, station_name):
 
         # =========================
-        # CASO: TODAS LAS ESTACIONES
+        # SI NO SE HA SELECCIONADO ESTACIÓN
         # =========================
 
         if station_name == "Todas":
+            st.info("ℹ️ Para visualizar el gráfico waffle debes seleccionar una estación en el panel izquierdo.")
+            return None
 
-            values = [
-                self.df["num_bikes_available"].sum(),
-                self.df["num_bikes_disabled"].sum(),
-                self.df["num_docks_available"].sum(),
-                self.df["num_docks_disabled"].sum(),
+        # =========================
+        # FILTRAR ESTACIÓN
+        # =========================
+
+        df_filtrado = self.df[self.df["name"] == station_name]
+
+        if df_filtrado.empty:
+            st.warning("No se encontraron datos para la estación")
+            return None
+
+        fila = df_filtrado.index[0]
+
+        values = self.df.iloc[fila][
+            [
+                "num_bikes_available",
+                "num_bikes_disabled",
+                "num_docks_available",
+                "num_docks_disabled",
             ]
+        ].values
 
-            capacity = self.df["capacity"].sum()
+        capacity = self.df.loc[fila, "capacity"]
 
-            titulo = "Estado total de estaciones Ecobici"
-
-        else:
-
-            df_filtrado = self.df[self.df["name"] == station_name]
-
-            if df_filtrado.empty:
-                st.warning("No se encontraron datos para la estación")
-                return None
-
-            fila = df_filtrado.index[0]
-
-            values = self.df.iloc[fila][
-                [
-                    "num_bikes_available",
-                    "num_bikes_disabled",
-                    "num_docks_available",
-                    "num_docks_disabled",
-                ]
-            ].values
-
-            capacity = self.df.loc[fila, "capacity"]
-
-            titulo = station_name
+        titulo = f"Estado de estación: {station_name}"
 
         # =========================
         # CALCULAR FILAS WAFFLE
@@ -69,7 +62,7 @@ class EcobiciWaffle:
             values=values,
             colors=["green", "red", "blue", "orange"],
             icons="bicycle",
-            icon_size=30,  # más grande
+            icon_size=30,
             legend={
                 "labels": [
                     "Bici disponible",
@@ -83,7 +76,7 @@ class EcobiciWaffle:
                 "framealpha": 0,
                 "fontsize": 12,
             },
-            figsize=(8, 7),  # más grande
+            figsize=(8, 7),
         )
 
         plt.title(titulo, fontsize=16)
