@@ -23,7 +23,7 @@ df = ecobici.merge_data()
 
 mapa = EcobiciMap(df)
 fig_map, estacion = mapa.create_map()
-
+st.subheader("Disponibilidad de bicicletas por estación")
 waffle = EcobiciWaffle(df)
 fig_waffle = waffle.create_waffle(estacion)
 
